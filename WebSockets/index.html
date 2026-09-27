@@ -1,14 +1,30 @@
 <html>
 <head>
     <title>Testing Websockets</title>
-    <script src="server.js"></script>
 </head>
-<body>
-    <h1>Enter your message</h1>
-    <input type=""text" placeholder="Type your message here" />
-    <button onClick="sendMessage()">Send</button>
-</body>
+    <body>
+        <h1> WebSocket Playground </h1>
+
+        <script>
+            const socket = new WebSocket("ws://localhost:8000");
+
+            socket.onopen = () => {
+                console.log("Connected to server");
+                
+                socket.send("Hello server")
+            }
+
+            socket.onmessage = (event) => {
+                console.log(`Server:`, event.data);
+            }
+
+            socket.onclose = () => {
+                console.log("Disconnected from server");
+            }
+            
+            socket.onerror = (error) => {
+                console.log(`Error - ${error}`)
+            }
+        </script>
+    </body>
 </html>
-
-
-    
