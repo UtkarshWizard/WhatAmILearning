@@ -1,0 +1,7 @@
+# finish my gitignore file
+# Ignore node_modules
+node_modules/
+# Ignore log files
+*.log
+# Ignore build directories 
+build/         
